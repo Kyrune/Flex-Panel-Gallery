@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Flex Panels 💪</title>
+    <title>Flex Panels</title>
     <link
       href="https://fonts.googleapis.com/css?family=Amatic+SC"
       rel="stylesheet"
@@ -29,12 +29,14 @@
         box-sizing: inherit;
       }
 
+      /* All panel styles */
       .panels {
         display: flex;
         min-height: 100vh;
         overflow: hidden;
       }
 
+      /* Single panel style */
       .panel {
         display: flex;
         flex: 1;
@@ -55,6 +57,7 @@
         font-size: 20px;
       }
 
+      /* Panel images */
       .panel1 {
         background-image: url(https://source.unsplash.com/gYl-UtwNg_I/1500x1500);
       }
@@ -82,6 +85,7 @@
         transition: transform 0.5s;
       }
 
+      /* Translates panels words */
       .panel > *:first-child {
         transform: translateY(-100%);
       }
@@ -112,6 +116,7 @@
       }
     </style>
 
+    <!-- Panels -->
     <div class="panels">
       <div class="panel panel1">
         <p>Hey</p>
@@ -143,10 +148,12 @@
     <script>
       const panels = document.querySelectorAll(".panel");
 
+      // Function toggles "open" for panels
       function toggleOpen() {
         this.classList.toggle("open");
       }
 
+      // Function detects if property name includes "flex" for open-active panels
       function toggleActive(e) {
         // console.log(e.propertyName);
         if (e.propertyName.includes("flex")) {
@@ -154,7 +161,10 @@
         }
       }
 
+      // Loops over each panel for toggleOpen
       panels.forEach(panel => panel.addEventListener("click", toggleOpen));
+
+      // Loops over each panel for toggleActive
       panels.forEach(panel =>
         panel.addEventListener("transitionend", toggleActive)
       );
